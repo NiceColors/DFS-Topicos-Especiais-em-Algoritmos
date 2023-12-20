@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robô</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/modal.css" />
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <button class="btn" id="comecar">Começar</button>
+        <select name="algoritmo" id="algoritmo-de-busca">
+          <option value="Busca em Profundidade">DFS</option>
+          <option value="Busca Estrela">A*</option>
+        </select>
+      </div>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <div class="modal-content">
+            <h2>Resultado da Busca</h2>
+            <div class="result-container">
+              <div class="custo">
+                <p id="custo">0</p>
+              </div>
+              <div class="dados-gerais">
+                <h4>Dados gerais</h4>
+                <div class="data">
+                  <div>
+                    <p>Passos:</p>
+                    <p id="passos">0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <img id="robo" src="./assets/images/robot.svg" alt="Robô" />
+      <div id="matriz"></div>
+    </main>
+  </body>
+  <script type="module" src="src/index.js"></script>
+  <script>
+    const openModalBtn = document.getElementById("openModal");
+    const closeModalBtn = document.getElementById("closeModal");
+    const modal = document.getElementById("modal");
+    const modalContent = document.querySelector(".modal-content");
+
+    closeModalBtn.addEventListener("click", function () {
+      modal.classList.remove("show");
+      modalContent.classList.remove("show");
+    });
+
+    window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.classList.remove("show");
+        modalContent.classList.remove("show");
+      }
+    });
+  </script>
+</html>
